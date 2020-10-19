@@ -82,10 +82,11 @@ class Shortcode extends Utilities {
 		extract(
 			shortcode_atts(
 				array(
-					'style'   => '',    // Possible Values: toggle, accordion, toggle-grouped, accordion-grouped
-					'filter'  => false,
-					'orderby' => 'date',
-					'order'   => 'DESC',
+					'style'     => '',    // Possible Values: toggle, accordion, toggle-grouped, accordion-grouped
+					'filter'    => false,
+					'orderby'   => 'date',
+					'order'     => 'DESC',
+					'linksonly' => false
 				),
 				$attributes,
 				'faqs'
@@ -99,7 +100,7 @@ class Shortcode extends Utilities {
 
 		ob_start();
 
-		$faqs_query = new FAQs_Query( $style, $filter, $orderby, $order );
+		$faqs_query = new FAQs_Query( $style, $filter, $orderby, $order, $linksonly );
 		$faqs_query->render();
 
 		wp_localize_script(
